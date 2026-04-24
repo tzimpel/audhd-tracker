@@ -1,0 +1,101 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Set Up Your Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="page-shell ion-padding">
+    <section class="intro">
+      <p class="eyebrow">First-time setup</p>
+      <h1>Keep it short. You can change this later.</h1>
+      <p class="lede">
+        Add a few warning signs and optional recovery defaults so the tracker feels useful right away.
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>Warning signs</h2>
+      <p class="section-copy">Add the small signs that usually show up before things feel harder.</p>
+
+      <div class="warning-sign-entry">
+        <ion-input
+          [(ngModel)]="newWarningSign"
+          label="New warning sign"
+          labelPlacement="stacked"
+          placeholder="Example: Sound feels sharp"
+        ></ion-input>
+        <ion-button expand="block" fill="outline" (click)="addWarningSign()">
+          <ion-icon slot="start" name="add-outline"></ion-icon>
+          Add warning sign
+        </ion-button>
+      </div>
+
+      <ion-list lines="none" *ngIf="warningSigns.length > 0">
+        <ion-item *ngFor="let warningSign of warningSigns; let index = index">
+          <ion-label>{{ warningSign }}</ion-label>
+          <ion-button fill="clear" (click)="moveWarningSignUp(index)" [disabled]="index === 0" aria-label="Move warning sign up">
+            <ion-icon slot="icon-only" name="arrow-up-outline"></ion-icon>
+          </ion-button>
+          <ion-button
+            fill="clear"
+            (click)="moveWarningSignDown(index)"
+            [disabled]="index === warningSigns.length - 1"
+            aria-label="Move warning sign down"
+          >
+            <ion-icon slot="icon-only" name="arrow-down-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" color="medium" (click)="removeWarningSign(index)" aria-label="Remove warning sign">
+            <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+      </ion-list>
+
+      <ion-note color="medium" *ngIf="warningSigns.length === 0">
+        No warning signs yet is fine. You can still finish setup.
+      </ion-note>
+    </section>
+
+    <section class="section-card">
+      <h2>Optional recovery defaults</h2>
+      <p class="section-copy">Use one line per item. Leave anything blank if it is not useful yet.</p>
+
+      <ion-textarea
+        [(ngModel)]="essentialTasksText"
+        label="Essential tasks"
+        labelPlacement="stacked"
+        placeholder="Take medication&#10;Feed the cat"
+        autoGrow="true"
+      ></ion-textarea>
+
+      <ion-textarea
+        [(ngModel)]="essentialCareText"
+        label="Essential care"
+        labelPlacement="stacked"
+        placeholder="Drink water&#10;Eat something easy"
+        autoGrow="true"
+      ></ion-textarea>
+
+      <ion-textarea
+        [(ngModel)]="supportActionsText"
+        label="Support actions"
+        labelPlacement="stacked"
+        placeholder="Wear headphones&#10;Lower the lights"
+        autoGrow="true"
+      ></ion-textarea>
+    </section>
+
+    <section class="section-card">
+      <h2>Stimulus setting</h2>
+      <ion-item lines="none">
+        <ion-label>Reduced-stimulus mode</ion-label>
+        <ion-toggle [(ngModel)]="reducedStimulusMode"></ion-toggle>
+      </ion-item>
+      <p class="section-copy">This will matter more once the support screens are built, but you can save it now.</p>
+    </section>
+
+    <ion-button expand="block" size="large" (click)="finishSetup()" [disabled]="isSaving">
+      Finish setup
+    </ion-button>
+  </div>
+</ion-content>
