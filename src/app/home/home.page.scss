@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+.page-shell {
+  min-height: 100%;
+  display: grid;
+  align-content: center;
+  gap: 1.25rem;
+  background:
+    radial-gradient(circle at top left, rgba(var(--ion-color-primary-rgb), 0.18), transparent 28%),
+    linear-gradient(180deg, var(--ion-background-color) 0%, rgba(var(--ion-color-light-rgb), 0.7) 100%);
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.intro {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: var(--ion-color-medium-shade);
+}
+
+ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+li + li {
+  margin-top: 0.6rem;
+}

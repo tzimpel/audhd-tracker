@@ -1,0 +1,7 @@
+{
+  "name": ".tmp-scaffold",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

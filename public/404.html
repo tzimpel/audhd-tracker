@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Redirecting…</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    (function () {
+      var path = window.location.pathname + window.location.search + window.location.hash;
+      sessionStorage.setItem('redirect', path);
+
+      var segments = window.location.pathname.split('/').filter(Boolean);
+      var basePath = segments.length > 0 ? '/' + segments[0] + '/' : '/';
+      window.location.replace(basePath);
+    })();
+  </script>
+</head>
+<body></body>
+</html>
