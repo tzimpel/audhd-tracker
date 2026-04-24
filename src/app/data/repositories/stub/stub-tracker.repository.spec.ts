@@ -1,3 +1,4 @@
+import { TestBed } from '@angular/core/testing';
 import { CheckIn } from '../../../domain/entities/check-in';
 import { WeeklyReflection } from '../../../domain/entities/weekly-reflection';
 import { StubLocalStore } from './stub-local-store';
@@ -8,8 +9,12 @@ describe('StubTrackerRepository', () => {
   let repository: StubTrackerRepository;
 
   beforeEach(() => {
-    store = new StubLocalStore();
-    repository = new StubTrackerRepository(store);
+    TestBed.configureTestingModule({
+      providers: [StubLocalStore, StubTrackerRepository],
+    });
+
+    store = TestBed.inject(StubLocalStore);
+    repository = TestBed.inject(StubTrackerRepository);
   });
 
   it('saves and returns recent check-ins in descending createdAt order', async () => {

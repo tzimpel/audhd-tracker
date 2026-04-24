@@ -1,3 +1,4 @@
+import { TestBed } from '@angular/core/testing';
 import { ExportEnvelope } from '../../../domain/export/export-envelope';
 import { StubExportRepository } from './stub-export.repository';
 import { StubLocalStore } from './stub-local-store';
@@ -7,8 +8,12 @@ describe('StubExportRepository', () => {
   let repository: StubExportRepository;
 
   beforeEach(() => {
-    store = new StubLocalStore();
-    repository = new StubExportRepository(store);
+    TestBed.configureTestingModule({
+      providers: [StubLocalStore, StubExportRepository],
+    });
+
+    store = TestBed.inject(StubLocalStore);
+    repository = TestBed.inject(StubExportRepository);
   });
 
   it('exports versioned data from the shared store', async () => {

@@ -1,3 +1,4 @@
+import { TestBed } from '@angular/core/testing';
 import { RecoveryPlan } from '../../../domain/entities/recovery-plan';
 import { UserSettings } from '../../../domain/entities/user-settings';
 import { WarningSign } from '../../../domain/entities/warning-sign';
@@ -9,8 +10,12 @@ describe('StubSettingsRepository', () => {
   let repository: StubSettingsRepository;
 
   beforeEach(() => {
-    store = new StubLocalStore();
-    repository = new StubSettingsRepository(store);
+    TestBed.configureTestingModule({
+      providers: [StubLocalStore, StubSettingsRepository],
+    });
+
+    store = TestBed.inject(StubLocalStore);
+    repository = TestBed.inject(StubSettingsRepository);
   });
 
   it('saves and loads user settings', async () => {
