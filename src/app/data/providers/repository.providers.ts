@@ -1,16 +1,21 @@
 import { Provider } from '@angular/core';
 import { EXPORT_REPOSITORY, SETTINGS_REPOSITORY, TRACKER_REPOSITORY } from './repository.tokens';
-import { StubExportRepository } from '../repositories/stub/stub-export.repository';
-import { StubLocalStore } from '../repositories/stub/stub-local-store';
-import { StubSettingsRepository } from '../repositories/stub/stub-settings.repository';
-import { StubTrackerRepository } from '../repositories/stub/stub-tracker.repository';
+import {
+  DEFAULT_TRACKER_DATABASE_NAME,
+  TRACKER_DATABASE_NAME,
+  TrackerDatabase,
+} from '../indexeddb/tracker-database';
+import { IndexedDbExportRepository } from '../repositories/indexeddb/indexeddb-export.repository';
+import { IndexedDbSettingsRepository } from '../repositories/indexeddb/indexeddb-settings.repository';
+import { IndexedDbTrackerRepository } from '../repositories/indexeddb/indexeddb-tracker.repository';
 
 export const repositoryProviders: Provider[] = [
-  StubLocalStore,
-  StubTrackerRepository,
-  StubSettingsRepository,
-  StubExportRepository,
-  { provide: TRACKER_REPOSITORY, useExisting: StubTrackerRepository },
-  { provide: SETTINGS_REPOSITORY, useExisting: StubSettingsRepository },
-  { provide: EXPORT_REPOSITORY, useExisting: StubExportRepository },
+  TrackerDatabase,
+  IndexedDbTrackerRepository,
+  IndexedDbSettingsRepository,
+  IndexedDbExportRepository,
+  { provide: TRACKER_DATABASE_NAME, useValue: DEFAULT_TRACKER_DATABASE_NAME },
+  { provide: TRACKER_REPOSITORY, useExisting: IndexedDbTrackerRepository },
+  { provide: SETTINGS_REPOSITORY, useExisting: IndexedDbSettingsRepository },
+  { provide: EXPORT_REPOSITORY, useExisting: IndexedDbExportRepository },
 ];

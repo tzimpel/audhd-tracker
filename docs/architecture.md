@@ -264,6 +264,12 @@ The classification algorithm should be:
 
 Use IndexedDB as the authoritative local store.
 
+Current implementation status:
+
+- runtime repositories use IndexedDB
+- schema versioning starts at database version `1`
+- singleton records such as settings and recovery plan are stored separately from list entities
+
 Reasons:
 
 - structured client-side storage

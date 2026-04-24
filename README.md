@@ -76,6 +76,12 @@ Planned storage strategy:
 - local IndexedDB-backed implementation for V1
 - future Firebase implementation behind the same interface
 
+Current implementation status:
+
+- repository interfaces are in place
+- runtime persistence uses IndexedDB
+- export/import works against the local dataset through the repository boundary
+
 That keeps product logic, UI state, and persistence concerns decoupled.
 
 ## Delivery Model
