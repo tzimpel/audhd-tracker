@@ -6,11 +6,22 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  padding: 0 1.5rem;
+}
+
+#container .eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ion-color-medium);
 }
 
 #container strong {
-  font-size: 20px;
-  line-height: 26px;
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 28px;
+  line-height: 1.1;
 }
 
 #container p {
@@ -22,6 +33,8 @@
   margin: 0;
 }
 
-#container a {
-  text-decoration: none;
+#container .meta {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--ion-color-medium-shade);
 }
