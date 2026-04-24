@@ -71,6 +71,11 @@ Recommended V1 direction:
 
 For a small personal PWA, hash-based routing is the safer initial choice on GitHub Pages.
 
+Current implementation choice:
+
+- V1 uses hash-based routing for GitHub Pages deployment
+- GitHub Actions is responsible for building and publishing the `www` output
+
 ## Layered Structure
 
 ## 1. App / Presentation Layer

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CheckIn } from '../../../domain/entities/check-in';
 import { WeeklyReflection } from '../../../domain/entities/weekly-reflection';
 import { TrackerRepository } from '../../../domain/repositories/tracker.repository';
@@ -10,7 +10,7 @@ function byNewestDate<T extends { createdAt: string }>(left: T, right: T): numbe
 
 @Injectable()
 export class StubTrackerRepository implements TrackerRepository {
-  constructor(private readonly store: StubLocalStore) {}
+  private readonly store = inject(StubLocalStore);
 
   async saveCheckIn(checkIn: CheckIn): Promise<void> {
     const checkIns = this.store.getCheckIns().filter((entry) => entry.id !== checkIn.id);

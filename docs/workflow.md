@@ -96,3 +96,11 @@ Before merge:
 - relevant tests should pass
 - documentation should be updated if architecture, workflow, or product behavior changed
 - the change should be stable enough for `main`
+
+## Automation Baseline
+
+Repository automation should stay in place once introduced:
+
+- pull requests should run install, lint, test, and build in GitHub Actions
+- pushes to `main` should be eligible for GitHub Pages deployment
+- GitHub Pages should use the documented routing strategy rather than relying on implicit SPA fallback behavior

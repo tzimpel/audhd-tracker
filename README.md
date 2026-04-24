@@ -89,6 +89,26 @@ Repository and delivery decisions:
 - CI/CD: GitHub Actions
 - initial hosting target: GitHub Pages for the repository site
 
+## Automation And Deployment
+
+Current repository automation direction:
+
+- CI runs install, lint, test, and build on pushes and pull requests
+- GitHub Pages deploys from `main`
+- the published artifact is the Angular build output in `www`
+
+Current Pages routing strategy:
+
+- V1 uses hash routing
+- this avoids SPA fallback handling on GitHub Pages
+- the app should be accessed under the repository Pages URL rather than assuming root-path hosting
+
+GitHub repository settings needed:
+
+- enable GitHub Pages
+- set the source to GitHub Actions
+- allow the Pages deployment workflow to publish from `main`
+
 Branch naming convention:
 
 - `feat/<short-purpose>`

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { RecoveryPlan } from '../../../domain/entities/recovery-plan';
 import { UserSettings } from '../../../domain/entities/user-settings';
 import { WarningSign } from '../../../domain/entities/warning-sign';
@@ -7,7 +7,7 @@ import { StubLocalStore } from './stub-local-store';
 
 @Injectable()
 export class StubSettingsRepository implements SettingsRepository {
-  constructor(private readonly store: StubLocalStore) {}
+  private readonly store = inject(StubLocalStore);
 
   async loadUserSettings(): Promise<UserSettings | null> {
     return this.store.getUserSettings();

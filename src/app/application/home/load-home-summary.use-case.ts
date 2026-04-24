@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { SETTINGS_REPOSITORY, TRACKER_REPOSITORY } from '../../data/providers/repository.tokens';
 import { SettingsRepository } from '../../domain/repositories/settings.repository';
 import { TrackerRepository } from '../../domain/repositories/tracker.repository';
@@ -13,10 +13,8 @@ export interface HomeSummary {
 
 @Injectable({ providedIn: 'root' })
 export class LoadHomeSummaryUseCase {
-  constructor(
-    @Inject(TRACKER_REPOSITORY) private readonly trackerRepository: TrackerRepository,
-    @Inject(SETTINGS_REPOSITORY) private readonly settingsRepository: SettingsRepository,
-  ) {}
+  private readonly trackerRepository = inject<TrackerRepository>(TRACKER_REPOSITORY);
+  private readonly settingsRepository = inject<SettingsRepository>(SETTINGS_REPOSITORY);
 
   async execute(): Promise<HomeSummary> {
     const [checkIns, warningSigns] = await Promise.all([
