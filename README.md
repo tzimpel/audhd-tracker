@@ -32,11 +32,13 @@ V1 should not depend on:
 ## Documentation Map
 
 - [AGENTS.md](AGENTS.md): instructions for coding agents working in this repo
+- [CONTRIBUTING.md](CONTRIBUTING.md): contribution, branch, commit, and merge rules
 - [docs/product-concept.md](docs/product-concept.md): product concept and scope
 - [docs/architecture.md](docs/architecture.md): technical architecture and storage abstraction
 - [docs/roadmap.md](docs/roadmap.md): phased delivery plan
 - [docs/backlog.md](docs/backlog.md): implementation slices and task breakdown
 - [docs/standards.md](docs/standards.md): product, UX, data, and coding standards
+- [docs/workflow.md](docs/workflow.md): implementation workflow for slice-by-slice delivery
 
 ## V1 Summary
 
